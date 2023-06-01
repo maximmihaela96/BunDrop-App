@@ -1,0 +1,129 @@
+{
+  "burgers": [
+    {
+      "id": 1,
+      "name": "Classic Burger",
+      "price": 89.9,
+      "description": "A juicy beef patty topped with lettuce, tomato, onion, and pickles, served on a sesame seed bun.",
+      "image": "/images/burgers/burger-1.png"
+    },
+    {
+      "id": 2,
+      "name": "Cheeseburger",
+      "price": 79.8,
+      "description": "A classic burger with an added slice of American cheese.",
+      "image": "/images/burgers/burger-2.png"
+
+    },
+    {
+      "id": 3,
+      "name": "Bacon Burger",
+      "price": 99.9,
+      "description": "A delicious burger topped with crispy bacon, lettuce, tomato, and mayo.",
+      "image": "/images/burgers/burger-3.png"
+  
+    },
+    {
+      "id": 4,
+      "name": "Avocado Turkey Burger",
+      "price": 109.9,
+      "description": "A healthier option with a turkey patty, sliced avocado, lettuce, and honey mustard.",
+      "image": "/images/burgers/burger-4.png" 
+      
+    },
+    {
+      "id": 5,
+      "name": "Veggie Burger",
+      "price": 98.9,
+      "description": "A plant-based patty made with a blend of vegetables, served with lettuce, tomato, and vegan mayo.",
+      "image": "/images/burgers/burger-5.png"
+    },
+    {
+      "id": 6,
+      "name": "Double Cheeseburger",
+      "price": 99.9,
+      "description": "A burger lover's dream with two beef patties and two slices of American cheese.",
+      "image": "/images/burgers/burger-6.png"
+  
+    },
+    {
+      "id": 7,
+      "name": "Hawaiian Burger",
+      "price": 102.99,
+      "description": "A tropical twist with a beef patty, grilled pineapple, ham, Swiss cheese, and teriyaki sauce.",
+      "image": "/images/burgers/burger-7.png"
+    },
+    {
+      "id": 8,
+      "name": "Spicy Jalapeno Burger",
+      "description": "A fiery burger with jalapeno slices, pepper jack cheese, lettuce, and chipotle mayo.",
+      "price": 99.9,
+      "image": "/images/burgers/burger-8.png"
+    },
+    {
+      "id": 9,
+      "name": "Mushroom Swiss Burger",
+      "description": "A savory burger topped with sautéed mushrooms and melted Swiss cheese.",
+      "price": 12.99,
+      "image": "/images/burgers/burger-9.png"
+    },
+    {
+      "id": 10,
+      "name": "Cheeseburger",
+      "price": 79.8,
+      "description": "A classic burger with an added slice of American cheese.",
+      "image": "/images/burgers/burger-2.png"
+
+    },
+    {
+      "id": 11,
+      "name": "Bacon Burger",
+      "price": 99.9,
+      "description": "A delicious burger topped with crispy bacon, lettuce, tomato, and mayo.",
+      "image": "/images/burgers/burger-3.png"
+  
+    },
+    {
+      "id": 12,
+      "name": "Spicy Jalapeno Burger",
+      "description": "A fiery burger with jalapeno slices, pepper jack cheese, lettuce, and chipotle mayo.",
+      "price": 99.9,
+      "image": "/images/burgers/burger-8.png"
+    },
+    {
+      "id": 13,
+      "name": "Mushroom Swiss Burger",
+      "description": "A savory burger topped with sautéed mushrooms and melted Swiss cheese.",
+      "price": 12.99,
+      "image": "/images/burgers/burger-9.png"
+    }
+  ],
+
+  "addition": [
+    {
+        "potatoes": [
+        {
+          "id": 1,
+          "name": "French Fries",
+          "price": 20
+        },
+        {
+          "id": 2,
+          "name": "Sweet Potato Fries",
+          "price": 20
+        }
+      ],
+
+      "drinks": [
+        {
+          "id": 1,
+          "name": "Cola"
+        },
+        {
+          "id": 2,
+          "name": "Sprite"
+        }
+      ]
+    }
+  ]
+}
