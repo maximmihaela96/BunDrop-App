@@ -94,50 +94,54 @@
   ],
   "addition": [
     {
-      "potatoes": [
+      "fries": [
         {
           "id": 1,
           "name": "French Fries",
-          "price": 20
+          "price": 20, 
+          "image": "/images/fries/fries-1.png"
         },
         {
           "id": 2,
           "name": "Sweet Potato Fries",
-          "price": 20
+          "price": 20,
+          "image": "/images/fries/fries-2.png"
         }
       ],
       "drinks": [
         {
           "id": 1,
           "name": "Cola",
-          "price": 20
+          "price": 20,
+          "image": "/images/drinks/cola.jpg"
         },
         {
           "id": 2,
           "name": "Sprite",
-          "price": 20
+          "price": 20,
+          "image": "/images/drinks/sprite.jpg"
+        },
+        {
+          "id": 3,
+          "name": " Strawberry Vanilla Soda",
+          "price": 20,
+          "image": "/images/drinks/soda-1.png"
+        },
+        {
+          "id": 4,
+          "name": "Erly Bird Soda",
+          "price": 20,
+          "image": "/images/drinks/soda-2.png"
+        },
+        {
+          "id": 5,
+          "name": "Milkshake",
+          "price": 20,
+          "image": "/images/drinks/milkshake-1.png"
         }
       ]
     }
   ],
   "orders": [
-    {
-      "totalPrice": 119.9,
-      "shoppingCartItems": [
-        {
-          "id": 3,
-          "name": "Bacon Burger",
-          "price": 99.9,
-          "description": "A delicious burger topped with crispy bacon, lettuce, tomato, and mayo.",
-          "image": "/images/burgers/burger-3.png"
-        },
-        {
-          "id": 1,
-          "name": "French Fries",
-          "price": 20
-        }
-      ],
-      "id": 1
-    }
   ]
 }

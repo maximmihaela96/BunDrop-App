@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import '../services/BurgerPage.css';
-import BurgerCards from "./BurgerCards";
+import BurgerCards from "../components/BurgerCards";
 
 function Burgers() {
     const [allBurgers, setAllBurgers] = useState([]);
@@ -17,8 +17,8 @@ function Burgers() {
     <div>
        <h1 className="page-title">Burgers</h1>
       <div>
-        {allBurgers.map((b) => (
-          <BurgerCards key={b.id} id={b.id} name={b.name} price={b.price} image={b.image} />
+        {allBurgers.map((burger) => (
+          <BurgerCards key={burger.id} id={burger.id} name={burger.name} price={burger.price} image={burger.image} />
         ))}
       </div>
     </div>

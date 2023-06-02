@@ -3,13 +3,13 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from './components/Navbar';
 import Header from './components/Header';
-import Home from './components/Home';
+import Home from './routes/Home';
 import Footer from './components/Footer';
 
-import Burgers from './components/Burgers';
-import BurgerItem from './components/BurgerItem';
-import ShoppingCart from './components/ShoppingCart';
-import Payment from './components/Payment';
+import Burgers from './routes/Burgers';
+import BurgerItem from './routes/BurgerItem';
+import ShoppingCart from './routes/ShoppingCart';
+import Payment from './routes/Payment';
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
         <Route exact path="/payment" element={<Payment />}></Route>
 
       </Routes>
-      
+
       <div> <Footer></Footer> </div>
     </Router>
     

@@ -2,7 +2,7 @@ import { Link  } from 'react-router-dom';
 import React, { useRef } from "react";
 import '../services/NavbarStyle.css';
 import logo from '../images/logo_black.png';
-import ShoppingCart from './ShoppingCart';
+import ShoppingCart from '../routes/ShoppingCart';
 
 
 
