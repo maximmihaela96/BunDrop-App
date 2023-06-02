@@ -14,10 +14,8 @@ function AdditionProducts({ potatoes, drinks  }) {
   function handlePotatoesSelection(potato) {
     const isSelected = selectedPotatoes.some((item) => item.id === potato.id);
     if (isSelected) {
-      // If the potato is already selected, remove it from the array
       setSelectedPotatoes(selectedPotatoes.filter((item) => item.id !== potato.id));
     } else {
-      // If the potato is not selected, add it to the array
       setSelectedPotatoes([...selectedPotatoes, potato]);
     }
   }
@@ -25,10 +23,8 @@ function AdditionProducts({ potatoes, drinks  }) {
   function handleDrinkSelection(drink) {
     const isSelected = selectedDrinks.some((item) => item.id === drink.id);
     if (isSelected) {
-      // If the drink is already selected, remove it from the array
       setSelectedDrinks(selectedDrinks.filter((item) => item.id !== drink.id));
     } else {
-      // If the drink is not selected, add it to the array
       setSelectedDrinks([...selectedDrinks, drink]);
     }
   }
@@ -37,17 +33,6 @@ function AdditionProducts({ potatoes, drinks  }) {
     localStorage.setItem("selectedPotatoes", JSON.stringify(selectedPotatoes));
     localStorage.setItem("selectedDrinks", JSON.stringify(selectedDrinks));
   }
-  // useEffect(() => {
-    
-  //   const savedSelectedPotatoes = localStorage.getItem("selectedPotatoes");
-  //   const savedSelectedDrink = localStorage.getItem("selectedDrinks");
-  //   if (savedSelectedPotatoes) {
-  //     selectedPotatoes(JSON.parse(savedSelectedPotatoes));
-  //   }
-  //   if (savedSelectedDrink) {
-  //     setSelectedDrinks(JSON.parse(savedSelectedDrink));
-  //   }
-  // }, []);
 
     return (
         <div>

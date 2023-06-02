@@ -13,7 +13,6 @@
       "price": 79.8,
       "description": "A classic burger with an added slice of American cheese.",
       "image": "/images/burgers/burger-2.png"
-
     },
     {
       "id": 3,
@@ -21,15 +20,13 @@
       "price": 99.9,
       "description": "A delicious burger topped with crispy bacon, lettuce, tomato, and mayo.",
       "image": "/images/burgers/burger-3.png"
-  
     },
     {
       "id": 4,
       "name": "Avocado Turkey Burger",
       "price": 109.9,
       "description": "A healthier option with a turkey patty, sliced avocado, lettuce, and honey mustard.",
-      "image": "/images/burgers/burger-4.png" 
-      
+      "image": "/images/burgers/burger-4.png"
     },
     {
       "id": 5,
@@ -44,7 +41,6 @@
       "price": 99.9,
       "description": "A burger lover's dream with two beef patties and two slices of American cheese.",
       "image": "/images/burgers/burger-6.png"
-  
     },
     {
       "id": 7,
@@ -73,7 +69,6 @@
       "price": 79.8,
       "description": "A classic burger with an added slice of American cheese.",
       "image": "/images/burgers/burger-2.png"
-
     },
     {
       "id": 11,
@@ -81,7 +76,6 @@
       "price": 99.9,
       "description": "A delicious burger topped with crispy bacon, lettuce, tomato, and mayo.",
       "image": "/images/burgers/burger-3.png"
-  
     },
     {
       "id": 12,
@@ -98,10 +92,9 @@
       "image": "/images/burgers/burger-9.png"
     }
   ],
-
   "addition": [
     {
-        "potatoes": [
+      "potatoes": [
         {
           "id": 1,
           "name": "French Fries",
@@ -113,17 +106,38 @@
           "price": 20
         }
       ],
-
       "drinks": [
         {
           "id": 1,
-          "name": "Cola"
+          "name": "Cola",
+          "price": 20
         },
         {
           "id": 2,
-          "name": "Sprite"
+          "name": "Sprite",
+          "price": 20
         }
       ]
+    }
+  ],
+  "orders": [
+    {
+      "totalPrice": 119.9,
+      "shoppingCartItems": [
+        {
+          "id": 3,
+          "name": "Bacon Burger",
+          "price": 99.9,
+          "description": "A delicious burger topped with crispy bacon, lettuce, tomato, and mayo.",
+          "image": "/images/burgers/burger-3.png"
+        },
+        {
+          "id": 1,
+          "name": "French Fries",
+          "price": 20
+        }
+      ],
+      "id": 1
     }
   ]
 }
