@@ -33,10 +33,8 @@ function AdditionProducts({ potatoes, drinks  }) {
     }
   }
 
-  function handleAddPotatoes() {
+  function handleAddAdditions() {
     localStorage.setItem("selectedPotatoes", JSON.stringify(selectedPotatoes));
-  }
-  function handleAddDrinks() {
     localStorage.setItem("selectedDrinks", JSON.stringify(selectedDrinks));
   }
   // useEffect(() => {
@@ -83,8 +81,7 @@ function AdditionProducts({ potatoes, drinks  }) {
             </div>
             ))}
           </ul>
-          <button onClick={handleAddPotatoes}>Add Potatis</button>
-          <button onClick={handleAddDrinks}>Add Drinks</button>
+          <button onClick={handleAddAdditions}>Add Additions</button>
         </div>
       );
     };

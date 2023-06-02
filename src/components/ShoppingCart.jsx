@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Modal from "react-modal";
 
 function ShoppingCart() {
@@ -42,9 +43,7 @@ function ShoppingCart() {
   }
 
   function handleDeletePotatoes(id) {
-    const updatedSelectedPotatoes = selectedPotatoes.filter(
-      (item) => item.id !== id
-    );
+    const updatedSelectedPotatoes = selectedPotatoes.filter( (item) => item.id !== id );
     setSelectedPotatoes(updatedSelectedPotatoes);
     localStorage.setItem("selectedPotatoes", JSON.stringify(updatedSelectedPotatoes));
   }
@@ -109,9 +108,9 @@ function ShoppingCart() {
       )}
     </div>
 
-    <div className="potatoes-container">
+    <div className="drinks-container">
     {selectedDrinks?.length > 0 ? (
-      selectedPotatoes.map((d) => (
+      selectedDrinks.map((d) => (
         <div key={d.id}>
           <h1> Drinks {d.name}</h1>
           <p>{d.price}</p>
@@ -131,6 +130,10 @@ function ShoppingCart() {
         <button onClick={handleConfirmOrder}>Yes</button>
         <button onClick={handleCancelOrder}>No</button>
       </Modal>
+
+      <Link to={"/burgers"}> <button>Back to Many</button> </Link>
+      <Link to={"/payment"}> <button>Back to Many</button> </Link>
+
   </div>
 
   )

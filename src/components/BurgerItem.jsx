@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import '../services/Items.css';
 import AdditionProducts from "./AdditionProducts";
 
@@ -45,7 +45,11 @@ function BurgerItem() {
         <AdditionProducts key={item.id} potatoes={item.potatoes} drinks={item.drinks}/>
         ))}
       </div>
+      <Link to={"/burgers"}> <button>Back to Many</button> </Link>
+      <Link to={"/shopping-cart"}> <button>Go to ShoppingCart</button> </Link>
     </div>
+
+    
   );
 }
 
