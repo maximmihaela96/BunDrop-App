@@ -27,11 +27,25 @@ function Payment() {
   const navigate = useNavigate();
   
 
-  function calculateItemPrice(item) {
-    const burgerPrice = item.burger.price;
-    const quantity = item.quantity;
-    const itemPrice = burgerPrice * quantity;
-    return itemPrice;
+  function calculateBurgersPrice(burgers) {
+    const burgerPrice = burgers.burger.price;
+    const quantity = burgers.quantity;
+    const burgersPrice = burgerPrice * quantity;
+    return burgersPrice;
+  }
+
+  function calculateFriesPrice(fries) {
+    const friesPrice = fries.price;
+    const quantity = fries.quantity;
+    const friessPrice = friesPrice * quantity;
+    return friessPrice;
+  }
+
+  function calculateDrinksPrice(drinks) {
+    const drinkPrice = drinks.price;
+    const quantity = drinks.quantity;
+    const drinksPrice = drinkPrice * quantity;
+    return drinksPrice;
   }
   // Calculate total price for burgers
   let burgerTotalPrice = 0;
@@ -47,7 +61,7 @@ function Payment() {
   let friesTotalPrice = 0;
   if (selectedFries) {
     friesTotalPrice = selectedFries.reduce((total, fries) => {
-      const quantity = 1; // Assuming fries quantity is always 1
+      const quantity = fries.quantity; 
       return total + fries.price * quantity;
     }, 0);
   }
@@ -56,7 +70,7 @@ function Payment() {
   let drinksTotalPrice = 0;
   if (selectedDrinks) {
     drinksTotalPrice = selectedDrinks.reduce((total, drink) => {
-      const quantity = 1; // Assuming drink quantity is always 1
+      const quantity = drink.quantity; // Assuming drink quantity is always 1
       return total + drink.price * quantity;
     }, 0);
   }
@@ -69,13 +83,11 @@ function Payment() {
 
     const order = [...selectedBurger, ...selectedFries, ...selectedDrinks];
     const currentDate = new Date();
-    const deliveryDays = Math.floor(Math.random() * 7) + 1; 
-    const deliveryDate = new Date(currentDate.getTime() + deliveryDays * 24 * 60 * 60 * 1000); // Add the random number of days
-    
+
     let orderData = {
       totalPrice: totalPrice,
       paymentMethod: paymentMethod, 
-      deliveryDate: deliveryDate,
+      deliveryDate: currentDate,
       order: order,
       adressDetails: {
         firstName: firstName,
@@ -100,7 +112,7 @@ function Payment() {
       // If payment method is Swish, include Swish number
       orderData = {
         ...orderData,
-        swishNumber: cardNumber, // Assuming cardNumber variable stores the Swish number
+        swishNumber: cardNumber,
       };
     }
 
@@ -162,9 +174,9 @@ return (
       const quantity = item.quantity;
       return (
         <div key={burger.id}>
-          <p>Name: {burger.name}</p>
-          <p>Price: {burger.price} x {quantity}</p>
-          <p>Total Price:{calculateItemPrice(item).toFixed(2)}kr</p>
+          <h5>Name: {burger.name}</h5>
+          <p>Price: {burger.price} kr x {quantity}</p>
+          <p>Total Price:{calculateBurgersPrice(item).toFixed(2)}kr</p>
         </div>
       );
     })}
@@ -172,16 +184,18 @@ return (
     <h3>Selected Fries:</h3>
       {selectedFries.map((fries) => (
           <div key={fries.id}>
-            <p>Name: {fries.name}</p>
-            <p>Price: {fries.price}</p>
+            <h5>Name: {fries.name}</h5>
+            <p>Price: {fries.price} kr x {fries.quantity}</p>
+            <p>Total Price:{calculateFriesPrice(fries).toFixed(2)}kr</p>
           </div>
     ))}
 
     <h3>Selected Drinks:</h3>
       {selectedDrinks.map((drink) => (
       <div key={drink.id}>
-        <p>Name: {drink.name}</p>
-        <p>Price: {drink.price}</p>
+        <h5>Name: {drink.name}</h5>
+        <p>Price: {drink.price} kr x {drink.quantity}</p>
+          <p>Total Price:{calculateDrinksPrice(drink).toFixed(2)}kr</p>
       </div>
     ))}
 

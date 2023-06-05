@@ -129,7 +129,7 @@
         },
         {
           "id": 4,
-          "name": "Erly Bird Soda",
+          "name": "Early Bird Soda",
           "price": 20,
           "image": "/images/drinks/soda-2.png"
         },
@@ -143,29 +143,6 @@
     }
   ],
   "orders": [
-    {
-      "totalPrice": "79.80",
-      "paymentMethod": "swish",
-      "deliveryDate": "2023-06-09T13:00:58.782Z",
-      "order": [
-        {
-          "burger": {
-            "name": "Cheeseburger",
-            "price": 79.8,
-            "id": 2
-          },
-          "quantity": 1
-        }
-      ],
-      "adressDetails": {
-        "firstName": "test",
-        "lastName": "test",
-        "streetAddress": "test",
-        "city": "test",
-        "houseNumber": "test"
-      },
-      "swishNumber": "122121",
-      "id": 1
-    }
+   
   ]
 }
