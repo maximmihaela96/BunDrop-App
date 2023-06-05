@@ -19,11 +19,11 @@ function Payment() {
   const [lastName, setLastName] = useState("");
   const [streetAddress, setStreetAddress] = useState("");
   const [city, setCity] = useState("");
-  const [postalCode, setPostalCode] = useState("");
-  const [country, setCountry] = useState("");
+  const [houseNumber, setHouseNumber] = useState("");
 
   const [cardDetailsValid, setCardDetailsValid] = useState(false);
   const [deliveryDetailsValid, setDeliveryDetailsValid] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState('');
   const navigate = useNavigate();
   
 
@@ -72,25 +72,37 @@ function Payment() {
     const deliveryDays = Math.floor(Math.random() * 7) + 1; 
     const deliveryDate = new Date(currentDate.getTime() + deliveryDays * 24 * 60 * 60 * 1000); // Add the random number of days
     
-    const orderData = {
+    let orderData = {
       totalPrice: totalPrice,
+      paymentMethod: paymentMethod, 
       deliveryDate: deliveryDate,
       order: order,
-      cardDetails: {
-        cardNumber: cardNumber,
-        cardName: cardName,
-        expiryDate: expiryDate,
-        cvv: cvv
-      },
       adressDetails: {
         firstName: firstName,
         lastName: lastName,
         streetAddress: streetAddress,
         city: city,
-        postalCode: postalCode,
-        country: country,
-      }
+        houseNumber: houseNumber,
+      },
     };
+    if (paymentMethod === 'card') {
+      // If payment method is card, include card details
+      orderData = {
+        ...orderData,
+        cardDetails: {
+          cardNumber: cardNumber,
+          cardName: cardName,
+          expiryDate: expiryDate,
+          cvv: cvv,
+        },
+      };
+    } else if (paymentMethod === 'swish') {
+      // If payment method is Swish, include Swish number
+      orderData = {
+        ...orderData,
+        swishNumber: cardNumber, // Assuming cardNumber variable stores the Swish number
+      };
+    }
 
     fetch("http://localhost:7000/orders", {
       method: "POST",
@@ -119,8 +131,7 @@ function Payment() {
         setLastName("");
         setStreetAddress("");
         setCity("");
-        setPostalCode("");
-        setCountry("");
+        setHouseNumber("");
         window.alert('Order placed successfully!');
         navigate('/'); // Redirect to the main page
         
@@ -186,6 +197,7 @@ return (
           setExpiryDate={setExpiryDate}
           cvv={cvv}
           setCvv={setCvv}
+          setPaymentMethod={setPaymentMethod}
           setCardDetailsValid={setCardDetailsValid}
         />
     </div>
@@ -196,8 +208,7 @@ return (
           lastName={lastName} setLastName={setLastName}
           streetAddress={streetAddress} setStreetAddress={setStreetAddress}
           city={city} setCity={setCity}
-          postalCode={postalCode} setPostalCode={setPostalCode}
-          country={country} setCountry={setCountry}
+          houseNumber={houseNumber} setHouseNumber={setHouseNumber}
           setDeliveryDetailsValid={setDeliveryDetailsValid}
         />
     </div>

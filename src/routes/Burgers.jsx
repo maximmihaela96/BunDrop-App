@@ -18,8 +18,10 @@ function Burgers() {
        <h1 className="page-title">Burgers</h1>
       <div>
         {allBurgers.map((burger) => (
-          <BurgerCards key={burger.id} id={burger.id} name={burger.name} price={burger.price} image={burger.image} />
+          <BurgerCards key={burger.id} id={burger.id} name={burger.name} price={burger.price} image={burger.image}  />
+          
         ))}
+                    
       </div>
     </div>
     );

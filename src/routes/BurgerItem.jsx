@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import '../services/Items.css';
 import AdditionProducts from "../components/AdditionProducts";
 
@@ -9,6 +9,7 @@ function BurgerItem() {
   const [burger, setBurger] = useState({});
   const [addition, setAddition] = useState();
   const [quantity, setQuantity] = useState(1);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(`http://localhost:7000/burgers/${productId}`)
@@ -24,14 +25,34 @@ function BurgerItem() {
 
   function addToCart() {
     const existingItems = JSON.parse(localStorage.getItem('selectedBurger')) || [];
+    const itemIndex = existingItems.findIndex(item => item.burger.id === burger.id);
+    if (itemIndex !== -1) {
+      // If the burger already exists, update the quantity
+      existingItems[itemIndex].quantity += quantity;
+    } else {
     const item  = { burger, quantity };
     existingItems.push(item);
+    }
     localStorage.setItem('selectedBurger', JSON.stringify(existingItems));
   };
 
   const handleQuantityChange = (event) => {
     setQuantity(parseInt(event.target.value));
   };
+
+  function redirectToShoppingCart() {
+    const selectedBurger = JSON.parse(localStorage.getItem('selectedBurger'));
+    const selectedDrinks = JSON.parse(localStorage.getItem('selectedDrinks'));
+    const selectedFries = JSON.parse(localStorage.getItem('selectedFries'));
+
+    if (  (Array.isArray(selectedFries) && selectedFries.length > 0) 
+          || (Array.isArray(selectedBurger) && selectedBurger.length > 0) 
+          || (Array.isArray(selectedDrinks) && selectedDrinks.length > 0)) {
+      navigate('/shopping-cart'); // Redirect to the shopping card
+    } else {
+      window.alert('You have not selected anything yet! ');
+    }
+  }
 
   return (
     <div>
@@ -55,7 +76,7 @@ function BurgerItem() {
         ))}
       </div>
       <Link to={"/burgers"}> <button>Back to Many</button> </Link>
-      <Link to={"/shopping-cart"}> <button>Go to ShoppingCart</button> </Link>
+      <button onClick={redirectToShoppingCart}>Go to ShoppingCart</button>
     </div>
     
   );
