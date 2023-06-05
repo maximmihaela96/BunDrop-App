@@ -3,30 +3,16 @@ import React, { useState } from "react";
 
 function AdditionProducts({ fries, drinks  }) {
 
-// if (performance.navigation.type === 1) {
-//   // Clear the local storage
-//   localStorage.clear();
-// }
-
   const [selectedFries, setSelectedFries] = useState([]);
   const [selectedDrinks, setSelectedDrinks] = useState([]);
 
-
-  //When an item is selected, it is added to the selectedFries array and stored in localStorage.
-  //When an item is deselected, it is removed from the selectedFries array from localStorage
   function handleFriesSelection(fries) {
-    //prevSelectedFries - previous state of the selected fries
+
     setSelectedFries((prevSelectedFries) => {
-    //select the fries and put into const isSelected
     const isSelected = selectedFries.some((item) => item.id === fries.id);
-    //if some fries is selected - true
     if (isSelected) {
-      //prevSelectedFries array is filtered to remove the fries item using filter()
-      //updated fries array is stored in the updatedFries variable.
       const updatedFries = prevSelectedFries.filter((item) => item.id !== fries.id);
-      //The updatedFries array is then stored in the localStorage
       localStorage.setItem("selectedFries", JSON.stringify(updatedFries));
-      //updatedFries array is returned from the callback function
       return updatedFries;
     } else {
       const updatedFries = [...prevSelectedFries, fries];
@@ -93,9 +79,6 @@ return (
              </ul>
       </div>
     </div>
-    {/* <div>
-          <button onClick={handleAddAdditions}>Add Additions</button> 
-        </div> */}
   </div>
 )};
 export default AdditionProducts

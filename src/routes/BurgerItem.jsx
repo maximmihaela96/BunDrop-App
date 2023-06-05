@@ -16,7 +16,6 @@ function BurgerItem() {
       .then((data) => setBurger(data));
   } , [productId] );
 
-
   useEffect(() => {
     fetch(`http://localhost:7000/addition`)
       .then((res) => res.json())
@@ -38,8 +37,8 @@ function BurgerItem() {
     <div>
       <div className="burger-item">
           <img src={process.env.PUBLIC_URL + burger.image} alt="" />
-          <h1>{burger.name}</h1>
-          <em>{burger.price} $</em>
+          <h1>Name: {burger.name}</h1>
+          <em>Price: {burger.price} kr</em>
 
           <select value={quantity} onChange={handleQuantityChange}>
             <option value="1">1</option>

@@ -1,6 +1,6 @@
 import './App.css';
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Navbar from './components/Navbar';
 import Header from './components/Header';
 import Home from './routes/Home';
@@ -13,7 +13,8 @@ import Payment from './routes/Payment';
 
 function App() {
   return (
-<Router>
+    <div>
+
       <div> <Navbar></Navbar> </div>
       <div> <Header></Header> </div>
 
@@ -28,8 +29,7 @@ function App() {
       </Routes>
 
       <div> <Footer></Footer> </div>
-    </Router>
-    
+    </div>
   );
 }
 

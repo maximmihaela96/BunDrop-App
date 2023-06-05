@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function ShoppingCart() {
@@ -7,29 +7,18 @@ function ShoppingCart() {
   const [selectedFries, setSelectedFries] = useState(JSON.parse(localStorage.getItem("selectedFries")) || []);
   const [selectedDrinks, setSelectedDrinks] = useState( JSON.parse(localStorage.getItem("selectedDrinks")) || [] );
 
-  const [selectedItems, setSelectedItems] = useState([]);
+  // const [selectedItems, setSelectedItems] = useState([]);
 
-  useEffect(() => {
-    const storedItems = JSON.parse(localStorage.getItem("selectedItems")) || [];
-    setSelectedItems(storedItems);
-  }, []);
+  // useEffect(() => {
+  //   const storedItems = JSON.parse(localStorage.getItem("selectedItems")) || [];
+  //   setSelectedItems(storedItems);
+  // }, []);
 
   function calculateItemPrice(item) {
     const burgerPrice = item.burger.price;
     const quantity = item.quantity;
     const itemPrice = burgerPrice * quantity;
     return itemPrice;
-  }
-
-  function calculateTotalPrice() {
-    let totalPrice = 0;
-
-    selectedItems.forEach((item) => {
-      const itemPrice = calculateItemPrice(item);
-      totalPrice += itemPrice;
-    });
-
-    return totalPrice;
   }
 
   function handleDeleteBurger(id) {
