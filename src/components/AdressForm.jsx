@@ -1,70 +1,120 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import '../services/CardDetails.css';
 
 function AddressForm({
     firstName, setFirstName,
     lastName, setLastName,
+    country, setCountry,
     streetAddress, setStreetAddress,
     city, setCity,
     postalCode, setPostalCode,
-    country, setCountry
+    setDeliveryDetailsValid,
   }){
 
-  function handleSubmit(e){
-    e.preventDefault();
+    const [isFirstNameValid, setFirstNameValid] = useState(true);
+    const [isLastNameValid, setLastNameValid] = useState(true);
+    const [isCountryValid, setCountryValid] = useState(true);
+    const [isStreetAddressValid, setStreetAddressValid] = useState(true);
+    const [isCityValid, setCityValid] = useState(true);
+    const [isPostalCodeValid, setPostalCodeValid] = useState(true);
 
-    setFirstName('');
-    setLastName('');
-    setStreetAddress('');
-    setCity('');
-    setPostalCode('');
-    setCountry('');
-  };
+    useEffect(() => {
+      validateDeliveryDetails();
+    }, [firstName, lastName,country, streetAddress, city, postalCode ]);
+
+    function validateDeliveryDetails() {
+
+      const firstNameValid = firstName.trim() !== "";
+      const lastNameValid = lastName.trim() !== "";
+      const countryValid = country.trim() !== "";
+      const streetAddressValid = streetAddress.trim() !== "";
+      const cityValid = city.trim() !== "";
+      const postalCodeValid = postalCode.trim() !== "";
+  
+      setFirstNameValid(firstNameValid);
+      setLastNameValid(lastNameValid);
+      setCountryValid(countryValid);
+      setStreetAddressValid(streetAddressValid);
+      setCityValid(cityValid);
+      setPostalCodeValid(postalCodeValid);
+  
+      const isFormValid = firstNameValid && lastNameValid && countryValid && streetAddressValid && cityValid && postalCodeValid;
+      setDeliveryDetailsValid(isFormValid);
+    }
 
 
   return (
-  <div>
-  <h2>Delivery Details</h2>
-    <form onSubmit={handleSubmit}>
-      <div> First Name:
-        <input type="text" name="firstName" value={firstName}
+    <div className="delivery-details-container">
+      <h2>Delivery Details</h2>
+      <div className="form-row">
+        <label>First Name:</label>
+        <input
+          type="text"
+          value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
-          required/>
-      </div>
-    
-      <div> Last Name:
-        <input type="text" name="lastName" value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-          required/>
-      </div>
-      
-      <div> Street Address:
-        <input type="text" name="streetAddress" value={streetAddress}
-          onChange={(e) => setStreetAddress(e.target.value)}
-          required/>
-      </div>
-
-      <div> City:
-        <input type="text" name="city" value={city}
-          onChange={(e) => setCity(e.target.value)}
           required
+          className={isFirstNameValid ? '' : 'invalid'}
         />
       </div>
 
-      <div> Postal Code:
-        <input type="text" name="postalCode" value={postalCode}
-          onChange={(e) => setPostalCode(e.target.value)}
-          required/>
+      <div className="form-row">
+        <label>Last Name:</label>
+        <input
+          type="text"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+          required
+          className={isLastNameValid ? '' : 'invalid'}
+        />
       </div>
 
-      <div> Country:
-        <input type="text" name="country" value={country}
+      <div className="form-row">
+        <label>Country:</label>
+        <input
+          type="text"
+          value={country}
           onChange={(e) => setCountry(e.target.value)}
-          required/>
+          required
+          className={isCountryValid ? '' : 'invalid'}
+        />
       </div>
-      
-    </form>
+
+      <div className="form-row">
+        <label>Street:</label>
+        <input
+          type="text"
+          value={streetAddress}
+          onChange={(e) => setStreetAddress(e.target.value)}
+          required
+          className={isStreetAddressValid ? '' : 'invalid'}
+        />
+      </div>
+
+      <div className="form-row">
+        <label>City:</label>
+        <input
+          type="text"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+          required
+          className={isCityValid ? '' : 'invalid'}
+        />
+      </div>
+
+      <div className="form-row">
+        <label>Postal Code:</label>
+        <input
+          type="text"
+          value={postalCode}
+          onChange={(e) => setPostalCode(e.target.value)}
+          required
+          className={isPostalCodeValid ? '' : 'invalid'}
+        />
+      </div>
+
     </div>
   );
-};
+}
+
 
 export default AddressForm;

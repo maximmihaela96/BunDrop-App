@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CardDetails from '../components/CardDetails';
 import AdressForm from '../components/AdressForm';
 
@@ -20,6 +21,10 @@ function Payment() {
   const [city, setCity] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [country, setCountry] = useState("");
+
+  const [cardDetailsValid, setCardDetailsValid] = useState(false);
+  const [deliveryDetailsValid, setDeliveryDetailsValid] = useState(false);
+  const navigate = useNavigate();
   
 
   function calculateItemPrice(item) {
@@ -60,6 +65,8 @@ function Payment() {
   const totalPrice = (burgerTotalPrice + friesTotalPrice + drinksTotalPrice).toFixed(2);
 
   function handlePlaceOrder() {
+    if (cardDetailsValid && deliveryDetailsValid) {
+
     const order = [...selectedBurger, ...selectedFries, ...selectedDrinks];
     const currentDate = new Date();
     const deliveryDays = Math.floor(Math.random() * 7) + 1; 
@@ -114,11 +121,23 @@ function Payment() {
         setCity("");
         setPostalCode("");
         setCountry("");
+        window.alert('Order placed successfully!');
+        navigate('/'); // Redirect to the main page
         
       })
       .catch((error) => {
         console.error("Error placing order:", error);
       });
+    }else {
+      window.alert('Please complete all the inputs. We need all the payment and delivery details before the order be placed! ');
+    }
+  }
+
+  function cancelOrder() {
+
+    localStorage.clear();
+    window.alert('The order was cancelled.');
+    navigate('/');
   }
 
 return (
@@ -167,6 +186,7 @@ return (
           setExpiryDate={setExpiryDate}
           cvv={cvv}
           setCvv={setCvv}
+          setCardDetailsValid={setCardDetailsValid}
         />
     </div>
 
@@ -178,11 +198,12 @@ return (
           city={city} setCity={setCity}
           postalCode={postalCode} setPostalCode={setPostalCode}
           country={country} setCountry={setCountry}
+          setDeliveryDetailsValid={setDeliveryDetailsValid}
         />
     </div>
 
       <button type="button" onClick={handlePlaceOrder}>Place Order</button>
-      <button type="button" >Cancel Order</button>
+      <button type="button" onClick={cancelOrder}>Cancel Order</button>
       //Poput with the price and expire date
 </div>
 

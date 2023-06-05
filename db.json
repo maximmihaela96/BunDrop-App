@@ -143,58 +143,6 @@
     }
   ],
   "orders": [
-    {
-      "totalPrice": "339.70",
-      "deliveryDate": "2023-06-11T08:12:19.082Z",
-      "order": [
-        {
-          "burger": {
-            "id": 12,
-            "name": "Spicy Jalapeno Burger",
-            "description": "A fiery burger with jalapeno slices, pepper jack cheese, lettuce, and chipotle mayo.",
-            "price": 99.9,
-            "image": "/images/burgers/burger-8.png"
-          },
-          "quantity": 1
-        },
-        {
-          "burger": {
-            "id": 12,
-            "name": "Spicy Jalapeno Burger",
-            "description": "A fiery burger with jalapeno slices, pepper jack cheese, lettuce, and chipotle mayo.",
-            "price": 99.9,
-            "image": "/images/burgers/burger-8.png"
-          },
-          "quantity": 2
-        },
-        {
-          "id": 2,
-          "name": "Sweet Potato Fries",
-          "price": 20,
-          "image": "/images/fries/fries-2.png"
-        },
-        {
-          "id": 2,
-          "name": "Sprite",
-          "price": 20,
-          "image": "/images/drinks/sprite.jpg"
-        }
-      ],
-      "cardDetails": {
-        "cardNumber": "test",
-        "cardName": "",
-        "expiryDate": "",
-        "cvv": "test"
-      },
-      "adressDetails": {
-        "firstName": "test",
-        "lastName": "",
-        "streetAddress": "",
-        "city": "test",
-        "postalCode": "",
-        "country": ""
-      },
-      "id": 1
-    }
+   
   ]
 }
