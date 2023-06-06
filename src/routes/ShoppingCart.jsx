@@ -7,9 +7,11 @@ function ShoppingCart() {
   const [selectedFries, setSelectedFries] = useState(JSON.parse(localStorage.getItem("selectedFries")) || []);
   const [selectedDrinks, setSelectedDrinks] = useState( JSON.parse(localStorage.getItem("selectedDrinks")) || [] );
 
+
+  
   function calculateBurgersPrice(item) {
     const burgerPrice = item.burger.price;
-    const quantity = item.quantity;
+    const quantity = item.burger.quantity;
     const itemPrice = burgerPrice * quantity;
     return itemPrice;
   }
@@ -48,39 +50,64 @@ function ShoppingCart() {
 
   function handleQuantityChange(event, index) {
     const updatedSelectedBurger = [...selectedBurger];
-    updatedSelectedBurger[index].quantity = parseInt(event.target.value);
+    const newQuantity = parseInt(event.target.value);
+    updatedSelectedBurger[index].burger.quantity = newQuantity;
     setSelectedBurger(updatedSelectedBurger);
     localStorage.setItem("selectedBurger", JSON.stringify(updatedSelectedBurger));
   }
+
+  function decreaseQuantity(index) {
+    const updatedSelectedBurger = [...selectedBurger];
+    const currentQuantity = updatedSelectedBurger[index].burger.quantity;
+    if (currentQuantity > 1) {
+      updatedSelectedBurger[index].burger.quantity = currentQuantity - 1;
+      setSelectedBurger(updatedSelectedBurger);
+      localStorage.setItem(
+        "selectedBurger",
+        JSON.stringify(updatedSelectedBurger)
+      );
+    }
+  }
+
+  function increaseQuantity(index) {
+    const updatedSelectedBurger = [...selectedBurger];
+    updatedSelectedBurger[index].burger.quantity += 1;
+    setSelectedBurger(updatedSelectedBurger);
+    localStorage.setItem(
+      "selectedBurger",
+      JSON.stringify(updatedSelectedBurger)
+    );
+  }
+  
   return (
     <div>
     <h2>Shopping Cart</h2>
     <div className="burger-container">
-    {selectedBurger?.length > 0 ? (
-      selectedBurger.map((burger, index) => (
-        <div key={burger.burger.id}>
-          <h4>{burger.burger.name}</h4>
-          <p>
+        {selectedBurger?.length > 0 ? (
+          selectedBurger.map((burger, index) => (
+            <div key={burger.burger.id}>
+              <h4>{burger.burger.name}</h4>
+              <p>
                 Quantity:{" "}
-                <select
-                  value={burger.quantity}
+                <button onClick={() => decreaseQuantity(index)}>-</button>
+                <input
+                  type="number"
+                  value={burger.burger.quantity}
                   onChange={(e) => handleQuantityChange(e, index)}
-                >
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                </select>
+                />
+                <button onClick={() => increaseQuantity(index)}>+</button>
               </p>
-
-          <p>Price: {burger.burger.price} Kr/burger</p>
-          <p>Total Price:{calculateBurgersPrice(burger).toFixed(2)}kr</p>
-          <button onClick={() => handleDeleteBurger(burger.burger.id)}>Remove</button>
-        </div>
-      ))
-      ) : (
-      <p>No burger selected</p>
-      )}
-    </div>
+              <p>Price: {burger.burger.price} Kr/burger</p>
+              <p>Total Price: {calculateBurgersPrice(burger).toFixed(2)}kr</p>
+              <button onClick={() => handleDeleteBurger(burger.burger.id)}>
+                Remove
+              </button>
+            </div>
+          ))
+        ) : (
+          <p>No burger selected</p>
+        )}
+      </div>
 
     <div className="fries-container">
     {selectedFries?.map((fries) => (

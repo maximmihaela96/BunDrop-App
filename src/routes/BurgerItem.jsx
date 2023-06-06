@@ -4,7 +4,6 @@ import '../services/Items.css';
 import AdditionProducts from "../components/AdditionProducts";
 
 function BurgerItem() {
-
   const { productId } = useParams();
   const [burger, setBurger] = useState({});
   const [addition, setAddition] = useState();
@@ -15,40 +14,44 @@ function BurgerItem() {
     fetch(`http://localhost:7000/burgers/${productId}`)
       .then((res) => res.json())
       .then((data) => setBurger(data));
-  } , [productId] );
+  }, [productId]);
 
   useEffect(() => {
     fetch(`http://localhost:7000/addition`)
       .then((res) => res.json())
       .then((data) => setAddition(data));
-  } , [] );
+  }, []);
 
   function addToCart() {
     const existingItems = JSON.parse(localStorage.getItem('selectedBurger')) || [];
-    const itemIndex = existingItems.findIndex(item => item.burger.id === burger.id);
-    if (itemIndex !== -1) {
-      // If the burger already exists, update the quantity
-      existingItems[itemIndex].quantity += quantity;
+    const existingBurgerIndex = existingItems.findIndex(item => item.burger.id === burger.id);
+  
+    if (existingBurgerIndex !== -1) {
+      // Item already exists in localStorage
+      const existingBurger = existingItems[existingBurgerIndex];
+      const confirmAdd = window.confirm('This burger is already in your cart. Do you still want to add it?');
+      if (!confirmAdd) {
+        return; // If the user cancels, exit the function
+      }
+      existingBurger.burger.quantity += 1;
+      existingItems[existingBurgerIndex] = existingBurger;
     } else {
-    const item  = { burger, quantity };
-    existingItems.push(item);
+      const newBurger = { burger: { id: burger.id, name: burger.name, price: burger.price, quantity: quantity } };
+      existingItems.push(newBurger);
     }
+  
     localStorage.setItem('selectedBurger', JSON.stringify(existingItems));
-  };
-
-  const handleQuantityChange = (event) => {
-    setQuantity(parseInt(event.target.value));
-  };
+  }
 
   function redirectToShoppingCart() {
     const selectedBurger = JSON.parse(localStorage.getItem('selectedBurger'));
     const selectedDrinks = JSON.parse(localStorage.getItem('selectedDrinks'));
     const selectedFries = JSON.parse(localStorage.getItem('selectedFries'));
 
-    if (  (Array.isArray(selectedFries) && selectedFries.length > 0) 
-          || (Array.isArray(selectedBurger) && selectedBurger.length > 0) 
-          || (Array.isArray(selectedDrinks) && selectedDrinks.length > 0)) {
-      navigate('/shopping-cart'); // Redirect to the shopping card
+    if ((Array.isArray(selectedFries) && selectedFries.length > 0)
+      || (Array.isArray(selectedBurger) && selectedBurger.length > 0)
+      || (Array.isArray(selectedDrinks) && selectedDrinks.length > 0)) {
+      navigate('/shopping-cart'); // Redirect to the shopping cart
     } else {
       window.alert('You have not selected anything yet! ');
     }
@@ -57,28 +60,20 @@ function BurgerItem() {
   return (
     <div>
       <div className="burger-item">
-          <img src={process.env.PUBLIC_URL + burger.image} alt="" />
-          <h1>Name: {burger.name}</h1>
-          <em>Price: {burger.price} kr</em>
-
-          <select value={quantity} onChange={handleQuantityChange}>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-
-          <button className="addToCard-button" onClick={addToCart}>Add To ShoppingCard</button>
+        <img src={process.env.PUBLIC_URL + burger.image} alt="" />
+        <h1>Name: {burger.name}</h1>
+        <em>Price: {burger.price} kr</em>
+        <button className="addToCard-button" onClick={addToCart}>Add To Shopping Cart</button>
       </div>
 
-      <div className="adition-container">
-      {addition?.map((addition) => (
-        <AdditionProducts key={addition.id} fries={addition.fries} drinks={addition.drinks}/>
+      <div className="addition-container">
+        {addition?.map((addition) => (
+          <AdditionProducts key={addition.id} fries={addition.fries} drinks={addition.drinks} />
         ))}
       </div>
-      <Link to={"/burgers"}> <button>Back to Many</button> </Link>
-      <button onClick={redirectToShoppingCart}>Go to ShoppingCart</button>
+      <Link to={"/burgers"}><button>Back to Menu</button></Link>
+      <button onClick={redirectToShoppingCart}>Go to Shopping Cart</button>
     </div>
-    
   );
 }
 

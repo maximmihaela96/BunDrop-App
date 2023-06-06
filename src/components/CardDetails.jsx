@@ -24,10 +24,7 @@ function CardDetails({
   }, [cardNumber, cardName, expiryDate, cvv]);
 
   function validateCardDetails() {
-    // const cardNumberValid = cardNumber.trim() !== '';
-    // const cardNameValid = cardName.trim() !== '';
-    // const expiryDateValid = expiryDate.trim() !== '';
-    // const cvvValid = cvv.trim() !== '';
+
     const cardNumberValid = selectedPaymentMethod === 'swish' || cardNumber.trim() !== '';
     const cardNameValid = selectedPaymentMethod === 'swish' || cardName.trim() !== '';
     const expiryDateValid = selectedPaymentMethod === 'swish' || expiryDate.trim() !== '';

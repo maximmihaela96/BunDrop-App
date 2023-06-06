@@ -14,9 +14,9 @@ function BurgerCards({ name, price, image, id }) {
       if (!confirmAdd) {
         return; // If the user cancels, exit the function
       }
-      existingBurger.quantity += 1;
+      existingBurger.burger.quantity += 1;
     } else {
-      existingBurger = { burger: { id, name, price, image }, quantity: 1 };
+      existingBurger = { burger: { id, name, price, quantity: 1  }};
       existingItems.push(existingBurger);
     }
   

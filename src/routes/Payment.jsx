@@ -29,7 +29,7 @@ function Payment() {
 
   function calculateBurgersPrice(burgers) {
     const burgerPrice = burgers.burger.price;
-    const quantity = burgers.quantity;
+    const quantity = burgers.burger.quantity;
     const burgersPrice = burgerPrice * quantity;
     return burgersPrice;
   }
@@ -52,8 +52,7 @@ function Payment() {
   if (selectedBurger) {
     burgerTotalPrice = selectedBurger.reduce((total, item) => {
       const burger = item.burger;
-      const quantity = item.quantity;
-      return total + burger.price * quantity;
+      return total + burger.price * burger.quantity;
     }, 0);
   }
   
@@ -78,16 +77,20 @@ function Payment() {
   // Calculate the total payment price
   const totalPrice = (burgerTotalPrice + friesTotalPrice + drinksTotalPrice).toFixed(2);
 
+  function getRandomDeliveryTime() {
+    const deliveryTimes = ['15 minutes', '30 minutes', '1 hour'];
+    const randomIndex = Math.floor(Math.random() * deliveryTimes.length);
+    return deliveryTimes[randomIndex];
+  }
+
   function handlePlaceOrder() {
     if (cardDetailsValid && deliveryDetailsValid) {
 
     const order = [...selectedBurger, ...selectedFries, ...selectedDrinks];
-    const currentDate = new Date();
 
     let orderData = {
       totalPrice: totalPrice,
       paymentMethod: paymentMethod, 
-      deliveryDate: currentDate,
       order: order,
       adressDetails: {
         firstName: firstName,
@@ -144,17 +147,18 @@ function Payment() {
         setStreetAddress("");
         setCity("");
         setHouseNumber("");
-        window.alert('Order placed successfully!');
+        window.alert(`Order placed successfully!Delivery time is: ${getRandomDeliveryTime()}`);
         navigate('/'); // Redirect to the main page
         
-      })
-      .catch((error) => {
-        console.error("Error placing order:", error);
-      });
-    }else {
-      window.alert('Please complete all the inputs. We need all the payment and delivery details before the order be placed! ');
-    }
-  }
+     })
+     .catch((error) => {
+       console.error("Error placing order:", error);
+     });
+ } else {
+   window.alert('Please complete all the inputs. We need all the payment and delivery details before the order can be placed!');
+ }
+}
+
 
   function cancelOrder() {
 
@@ -171,11 +175,10 @@ return (
     <h3>Selected Burgers:</h3>
       {selectedBurger.map((item) => {
       const burger = item.burger;
-      const quantity = item.quantity;
       return (
         <div key={burger.id}>
           <h5>Name: {burger.name}</h5>
-          <p>Price: {burger.price} kr x {quantity}</p>
+          <p>Price: {burger.price} kr x {burger.quantity}</p>
           <p>Total Price:{calculateBurgersPrice(item).toFixed(2)}kr</p>
         </div>
       );
