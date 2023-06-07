@@ -20,12 +20,12 @@ function Home() {
 
       <div className="card">
       <img src="../images/cola2.jpg" alt="" />
-        <h2>Burger</h2>
+        <h2>Fries</h2>
       </div>
 
       <div className="card">
       <img src="../images/fries-3.jpg" alt="" />
-        <h2>Fries</h2>
+        <h2>Drink</h2>
       </div>
     </div>
 
