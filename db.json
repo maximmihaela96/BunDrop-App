@@ -83,13 +83,6 @@
       "description": "A fiery burger with jalapeno slices, pepper jack cheese, lettuce, and chipotle mayo.",
       "price": 99.9,
       "image": "/images/burgers/burger-8.png"
-    },
-    {
-      "id": 13,
-      "name": "Mushroom Swiss Burger",
-      "description": "A savory burger topped with sautéed mushrooms and melted Swiss cheese.",
-      "price": 12.99,
-      "image": "/images/burgers/burger-9.png"
     }
   ],
   "addition": [
@@ -103,10 +96,23 @@
         },
         {
           "id": 2,
-          "name": "Sweet Potato Fries",
+          "name": "Sweet Fries",
           "price": 20,
           "image": "/images/fries/fries-2.png"
+        },
+        {
+          "id": 3,
+          "name": "Widge Fries",
+          "price": 20,
+          "image": "/images/fries/fries-3.jpg"
+        },
+        {
+          "id": 4,
+          "name": "Cheesse Fries",
+          "price": 20,
+          "image": "/images/fries/fries-4.jpg"
         }
+        
       ],
       "drinks": [
         {
@@ -120,12 +126,6 @@
           "name": "Sprite",
           "price": 20,
           "image": "/images/drinks/sprite.jpg"
-        },
-        {
-          "id": 3,
-          "name": " Strawberry Vanilla Soda",
-          "price": 20,
-          "image": "/images/drinks/soda-1.png"
         },
         {
           "id": 4,

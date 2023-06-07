@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../services/CardDetails.css';
+import '../services/PaymentDetails.css';
 
 function AddressForm({
     firstName, setFirstName,

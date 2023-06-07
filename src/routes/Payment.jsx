@@ -148,7 +148,7 @@ function Payment() {
         setCity("");
         setHouseNumber("");
         window.alert(`Order placed successfully!Delivery time is: ${getRandomDeliveryTime()}`);
-        navigate('/'); // Redirect to the main page
+        navigate('/'); // Go to the main page
         
      })
      .catch((error) => {
@@ -158,8 +158,6 @@ function Payment() {
    window.alert('Please complete all the inputs. We need all the payment and delivery details before the order can be placed!');
  }
 }
-
-
   function cancelOrder() {
 
     localStorage.clear();

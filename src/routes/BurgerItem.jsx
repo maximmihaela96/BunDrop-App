@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import '../services/Items.css';
+import '../services/BurgerDetailsPage.css';
 import AdditionProducts from "../components/AdditionProducts";
 
 function BurgerItem() {

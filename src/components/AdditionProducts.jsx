@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-function AdditionProducts({ fries, drinks  }) {
-
+function AdditionProducts({ fries, drinks }) {
 
   function updateFriesSelection(selectedFries, quantityChange) {
     const existingItems = JSON.parse(localStorage.getItem('selectedFries')) || [];
-  
     const existingFries = existingItems.find((item) => item.id === selectedFries.id);
   
     if (existingFries) {

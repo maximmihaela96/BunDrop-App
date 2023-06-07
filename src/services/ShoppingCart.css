@@ -1,0 +1,82 @@
+.shopping-cart {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .shopping-cart h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .burger-container,
+  .fries-container,
+  .drinks-container {
+    margin-bottom: 30px;
+  }
+  
+  .burger-container h4,
+  .fries-container h4,
+  .drinks-container h4 {
+    margin-bottom: 10px;
+  }
+  
+  .burger-container p,
+  .fries-container p,
+  .drinks-container p {
+    margin-bottom: 5px;
+  }
+  
+  .cart-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  
+  .cart-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .cart-button:hover {
+    background-color: #45a049;
+  }
+
+  .cart-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .cart-button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Add additional styles for the buttons if needed */
+  
+  .decrease-quantity-button,
+  .increase-quantity-button {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .decrease-quantity-button:hover,
+  .increase-quantity-button:hover {
+    background-color: #45a049;
+  }
+  

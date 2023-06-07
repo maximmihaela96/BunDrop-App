@@ -1,5 +1,5 @@
-import React, {useState } from "react";
-import '../services/Cards.css';
+import React from "react";
+import '../services/ProductCards.css';
 
 
 function FriesCards({ fries }) {
@@ -27,10 +27,10 @@ function FriesCards({ fries }) {
 
   return (
 
-      <div>
+    <div>
       {fries?.map((fries) => (
         <div className="card" key={fries.id}>
-          <img src={process.env.PUBLIC_URL + fries.image} alt="" />
+          <img src={process.env.PUBLIC_URL + fries.image} />
           <h1>{fries.name}</h1>
           <p>{fries.price} <span>kr</span></p>
           <button onClick={() => addToCart(fries)}>Add to Cart</button>

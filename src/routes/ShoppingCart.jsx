@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import '../services/ShoppingCart.css';
 
 function ShoppingCart() {
 
@@ -80,7 +81,7 @@ function ShoppingCart() {
   }
   
   return (
-    <div>
+    <div className="shopping-cart">
     <h2>Shopping Cart</h2>
     <div className="burger-container">
         {selectedBurger?.length > 0 ? (

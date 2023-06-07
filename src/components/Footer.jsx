@@ -1,5 +1,7 @@
 import React from 'react'
 import '../services/NavbarStyle.css';
+
+
 function Footer() {
   return (
     <div className='footer-container'>

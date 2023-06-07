@@ -1,3 +1,22 @@
-.page-title{
+.meny-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+  }
+
+  .cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Adjust the gap between cards to your preference */
+    margin-top: 20px; /* Add margin as needed */
+    max-width: 1200px; /* Adjust the maximum width of the cards container */
+    width: 100%;
+  }
+  
+  .page-title {
     text-align: center;
-}
+  }

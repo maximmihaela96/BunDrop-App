@@ -1,5 +1,5 @@
-import React, {useState } from "react";
-import '../services/Cards.css';
+import React from "react";
+import '../services/ProductCards.css';
 
 function DrinksCard({ drinks }) {
 
@@ -23,12 +23,14 @@ function DrinksCard({ drinks }) {
 
   return (
 
-      <div>
+    <div>
       {drinks?.map((drinks) => (
-        <div className="card" key={drinks.id}>
-          <img src={process.env.PUBLIC_URL + drinks.image} alt="" />
+        <div className="card" key={drinks.id} style={{ marginright: '10px' }}>
+          
+          <img src={process.env.PUBLIC_URL + drinks.image} />
           <h1>{drinks.name}</h1>
           <p>{drinks.price} <span>kr</span></p>
+          
           <button onClick={() => addToCart(drinks)} >Add to Cart</button>
         </div>
       ))}
