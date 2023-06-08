@@ -17,7 +17,8 @@ function BurgerCards({ name, price, image, id }) {
       }
       existingBurger.burger.quantity += 1;
     } else {
-      existingBurger = { burger: { id, name, price, quantity: 1  }};
+      const confirmAddSuccesfully = window.confirm('This burger was added in the cart!');
+      existingBurger = { burger: { id, name, price, image, quantity: 1  }};
       existingItems.push(existingBurger);
     }
   

@@ -1,4 +1,5 @@
 import React from "react";
+import '../services/BurgerDetailsPage.css';
 
 function AdditionProducts({ fries, drinks }) {
 
@@ -68,43 +69,38 @@ function AdditionProducts({ fries, drinks }) {
 
 return (
   <div>
-    <div style={{ display: 'inline-flex', backgroundColor:'#333' }}>
-      <div>
-        <h2> Choose your fries:</h2>
+    <div className="addition-container">
           <ul>
+          <h2> Choose your fries:</h2>
             {fries?.map((fries) => (
-              <div key={fries.id}>
-                <label>
+              <div key={fries.id} className="fries-details">
                 <img src={process.env.PUBLIC_URL + fries.image} alt="" style={{ width: '50px', height: '50px' }} />
-                 {fries.name}
-                 {fries.price} kr
-
-                 <button onClick={() => updateFriesSelection(fries, 1)}>+</button>
-                 <button onClick={() => updateFriesSelection(fries, -1)}>-</button>
-                 </label>
+                <p>{fries.name}</p>
+                <p>{fries.price} kr</p>
+                  <div className="fries-button">
+                  <button onClick={() => updateFriesSelection(fries, 1)}>+</button>
+                  <button onClick={() => updateFriesSelection(fries, -1)}>-</button>
+                  </div>
                </div>
              ))}
            </ul>
-      </div>
 
-      <div>
-        <h2>Choose your Drink:</h2>
           <ul>
+          <h2>Choose your Drink:</h2>
             {drinks?.map((drink) => (
-              <div key={drink.id}>
+              <div key={drink.id} className="drinks-details">
               
-              <img src={process.env.PUBLIC_URL + drink.image} alt="" style={{ width: '50px', height: '50px' }} />
-              {drink.name}
-              {drink.price}
-
-              <button onClick={() => updateDrinksSelection(drink, 1)}>+</button>
-              <button onClick={() => updateDrinksSelection(drink, -1)}>-</button>
-                 
+              <img src={process.env.PUBLIC_URL + drink.image} alt="" style={{ width: '50px', height: '50px'}} />
+              <p>{drink.name}</p>
+              <p>{drink.price} kr</p>
+                <div className="drinks-button">
+                  <button onClick={() => updateDrinksSelection(drink, 1)}>+</button>
+                  <button onClick={() => updateDrinksSelection(drink, -1)}>-</button> 
+                </div>
               </div>
                ))}
-             </ul>
+            </ul>
       </div>
-    </div>
   </div>
 )};
 export default AdditionProducts

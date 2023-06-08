@@ -1,44 +1,52 @@
-import { Link  } from 'react-router-dom';
-import React, { useRef } from "react";
-import '../services/NavbarStyle.css';
+import { Link, useNavigate  } from 'react-router-dom';
+import React from "react";
+import '../services/Navbar.css';
 import logo from '../images/logo_black.png';
 
 function Navbar()  {
-  const navbarRef = useRef();
+  const navigate = useNavigate();
 
-  const navbarHandler = () => {
-    navbarRef.current.classList.toggle("active");
-  };
+  function redirectToShoppingCart() {
+    const selectedBurger = JSON.parse(localStorage.getItem('selectedBurger'));
+    const selectedDrinks = JSON.parse(localStorage.getItem('selectedDrinks'));
+    const selectedFries = JSON.parse(localStorage.getItem('selectedFries'));
+
+    if ((Array.isArray(selectedFries) && selectedFries.length > 0)
+      || (Array.isArray(selectedBurger) && selectedBurger.length > 0)
+      || (Array.isArray(selectedDrinks) && selectedDrinks.length > 0)) {
+      navigate('/shopping-cart'); // Redirect to the shopping cart
+    } else {
+      window.alert('You have not selected anything yet! ');
+    }
+  }
 
   return (
-    <header className="header">
+
+    // Logo
+    <header className="navbar">
       <div className="logo">
         <a href="./"><img src={logo} alt="bun_drop" /></a>
         <div className="logo-title">
-          <p className="logo-name">Bun Drop Hamburger</p>
+          <p className="logo-name">Bun Drop Hamburgers</p>
           <span className="logo-slogan" >Drop it like it's hot! </span>
         </div>
       </div>
-
-<div className="navbar-container">
-        <div className="navbar-items" ref={navbarRef}>
-            <ul>
-            <Link className="navbar-link" to="/">Home</Link>
-            <Link className="navbar-link" to="/meny">Meny</Link>
-            <Link className="navbar-link" to="#">About</Link>
-            <Link className="navbar-link" to="#">Contact</Link>
-            </ul>
-        </div>
-          <div className="icons-container">
-          <Link to="/shopping-cart">
-            <div className="fas fa-shopping-cart" />
-          </Link>
-            <div className="fas fa-bars" id="menu-btn"onClick={navbarHandler}/>
-
+      {/* Navbar Items */}
+      <div className="navbar-container">
+          <div className="navbar-items">
+              <ul>
+              <Link className="navbar-link" to="/">Home</Link>
+              <Link className="navbar-link" to="/meny">Meny</Link>
+              </ul>
           </div>
-        </div>
-
-      </header>
+      {/* Icon Item */}
+            <div className="icon-container">
+            
+              <button onClick={redirectToShoppingCart} className="fas fa-shopping-cart"></button>
+           
+            </div>
+      </div>
+    </header>
   );
 };
 

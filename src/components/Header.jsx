@@ -1,32 +1,30 @@
 import React from 'react'
-import '../services/HeaderStyle.css';
+import '../services/Header.css';
 import burgerImage from '../images/burger.png'; 
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
-    <section className="home" >
-        <div className="home-text">
-          <h4>
-            Best <span>In Hamburger</span>all the times
-          </h4>
+    <div className="header">
+        <div className="header-text">
           <h1>
-            BBQ Chicken Salad Burger with Cremy Avocado.
+            Order your best food anytime by BunDrop!
           </h1>
 
           <p>
-            Lorem ipsum, dolor <span>In Hamburger</span> sit amet adipisicing elit. Placeat
+            Lorem ipsum, dolor best Hamburgers sit amet adipisicing elit. Placeat
             labore, sint cupiditate distinctio tempora reiciendis.
           </p>
 
-          <div className='main-btn'>
-            <a href='#' className='btn1'>Order Now</a>
+          <div className='order-btn'>
+            <Link to="/meny" className='orderBtn'>Order Now</Link>
           </div>
         </div>
 
-          <div className="home-img">
+          <div className="header-img">
             <img src={burgerImage} alt="" />
           </div>
-      </section>
+      </div>
   )
 }
 

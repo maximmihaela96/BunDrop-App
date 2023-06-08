@@ -19,6 +19,7 @@ function FriesCards({ fries }) {
         existingFries.quantity += 1;
       } else {
         // If the item doesn't exist, add it with quantity 1
+        const confirmAddSuccesfully = window.confirm('This fries was added in the cart!');
         selectedFries.quantity = 1;
         existingItems.push(selectedFries);
       }

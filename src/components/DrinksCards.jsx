@@ -15,6 +15,7 @@ function DrinksCard({ drinks }) {
               }
               existingDrinks.quantity += 1;
             } else {
+              const confirmAddSuccesfully = window.confirm('This drink was added in the cart!');
               selectedDrinks.quantity = 1;
               existingItems.push(selectedDrinks);
             }

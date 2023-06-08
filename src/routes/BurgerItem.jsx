@@ -36,7 +36,8 @@ function BurgerItem() {
       existingBurger.burger.quantity += 1;
       existingItems[existingBurgerIndex] = existingBurger;
     } else {
-      const newBurger = { burger: { id: burger.id, name: burger.name, price: burger.price, quantity: quantity } };
+      const confirmAddSuccesfully = window.confirm('This burger was added in the cart!');
+      const newBurger = { burger: { id: burger.id, name: burger.name, price: burger.price, image: burger.image, quantity: quantity } };
       existingItems.push(newBurger);
     }
   
@@ -58,22 +59,31 @@ function BurgerItem() {
   }
 
   return (
-    <div>
-      <div className="burger-item">
-        <img src={process.env.PUBLIC_URL + burger.image} alt="" />
-        <h1>Name: {burger.name}</h1>
-        <em>Price: {burger.price} kr</em>
-        <button className="addToCard-button" onClick={addToCart}>Add To Shopping Cart</button>
+  <div>
+    <div className="details-container">
+      <div className="burger-img">
+      <img src={process.env.PUBLIC_URL + burger.image} alt="" />
       </div>
+   
+        <div className="burger-details">
+          <h1> {burger.name}</h1>
+          <p>Price: {burger.price} kr</p>
+          <p>Description: <span> {burger.description}</span></p>
+          <div className='order-btn'>
+            <button className="orderBtn" onClick={addToCart}>Order</button>
+        </div>
 
-      <div className="addition-container">
-        {addition?.map((addition) => (
-          <AdditionProducts key={addition.id} fries={addition.fries} drinks={addition.drinks} />
-        ))}
+        <div>
+          {addition?.map((addition) => (
+            <AdditionProducts key={addition.id} fries={addition.fries} drinks={addition.drinks} />
+          ))}
+        </div>
+
+        <Link to={"/burgers"}><button className="backtomenu-btn" >Back to Menu</button></Link>
+        <button className='gotocart-btn' onClick={redirectToShoppingCart}>Go to Shopping Cart</button>
       </div>
-      <Link to={"/burgers"}><button>Back to Menu</button></Link>
-      <button onClick={redirectToShoppingCart}>Go to Shopping Cart</button>
     </div>
+  </div>
   );
 }
 

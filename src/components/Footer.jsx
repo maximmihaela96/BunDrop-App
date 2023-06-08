@@ -1,11 +1,9 @@
 import React from 'react'
-import '../services/NavbarStyle.css';
-
 
 function Footer() {
   return (
     <div className='footer-container'>
-      <h1>Footer</h1>
+      <h5 style={{ textAlign: 'center'}}>By: Bun Drop Hamburgers</h5>
     </div>
   )
 }

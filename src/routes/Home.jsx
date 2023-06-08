@@ -1,35 +1,41 @@
-import React, { useState, useEffect } from "react";
+import React  from "react";
 import Header from '../components/Header';
-import '../services/BurgerPage.css';
-import '../services/HomeCards.css';
+import '../services/Home.css';
+import { Link } from 'react-router-dom';
 
 function Home() {
 
-
   return (
-    
-<div>
-    <Header></Header>
-
-
     <div>
-      <div className="card">
-      <img src="../images/burger.png" alt="" />
-        <h2>Burger</h2>
-      </div>
+        <Header></Header>
+        <div className="home-page-title">
+          <h1>What do you want to buy?</h1>
+        </div>
+        <div className="product-container">
 
-      <div className="card">
-      <img src="../images/cola2.jpg" alt="" />
-        <h2>Fries</h2>
-      </div>
+        <Link to="/meny#burgers">
+          <div className="products-card">
+            <h2>Burger</h2>
+          <img src={process.env.PUBLIC_URL + "/images/burgers/burger-4.png"} alt="" />
+          </div>
+        </Link>
 
-      <div className="card">
-      <img src="../images/fries-3.jpg" alt="" />
-        <h2>Drink</h2>
-      </div>
+          <Link to="/meny#fries">
+            <div className="products-card">
+              <h2>Fries</h2>
+            <img src={process.env.PUBLIC_URL + "/images/fries/fries-3.jpg"} alt="" />
+            </div>
+          </Link>
+
+          <Link to="/meny#drinks">
+          <div className="products-card">
+            <h2>Drinks</h2>
+          <img src={process.env.PUBLIC_URL + "/images/drinks/cola.jpg"} alt="" />
+          </div>
+          </Link>
+
+        </div>
     </div>
-
-</div>
   )
 }
 

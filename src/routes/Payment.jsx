@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CardDetails from '../components/CardDetails';
-import AdressForm from '../components/AdressForm';
+import AddressForm from '../components/AddressForm';
 
 function Payment() {
 
@@ -12,9 +12,8 @@ function Payment() {
   const [cardNumber, setCardNumber] = useState("");
   const [cardName, setCardName] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
+  
   const [cvv, setCvv] = useState("");
-
-
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [streetAddress, setStreetAddress] = useState("");
@@ -69,7 +68,7 @@ function Payment() {
   let drinksTotalPrice = 0;
   if (selectedDrinks) {
     drinksTotalPrice = selectedDrinks.reduce((total, drink) => {
-      const quantity = drink.quantity; // Assuming drink quantity is always 1
+      const quantity = drink.quantity; 
       return total + drink.price * quantity;
     }, 0);
   }
@@ -101,7 +100,7 @@ function Payment() {
       },
     };
     if (paymentMethod === 'card') {
-      // If payment method is card, include card details
+      // If payment method is card, insert card details
       orderData = {
         ...orderData,
         cardDetails: {
@@ -112,7 +111,7 @@ function Payment() {
         },
       };
     } else if (paymentMethod === 'swish') {
-      // If payment method is Swish, include Swish number
+      // If payment method is Swish, insert Swish number
       orderData = {
         ...orderData,
         swishNumber: cardNumber,
@@ -168,70 +167,75 @@ function Payment() {
 return (
   
 <div>
-<h2>Order:</h2>
+  <div className='order-confirmation'>
+    <div className="page-title">
+      <h2>Order Confirmation</h2>
+    </div>
+    <div className='order-container'>
+        <h3>Selected Burgers:</h3>
+          {selectedBurger.map((item) => {
+          const burger = item.burger;
+          return (
+            <div key={burger.id}>
+              <h5>Burger Type: {burger.name}</h5>
+              <p>Price: {burger.price} kr x {burger.quantity}</p>
+              <p>Total Price:{calculateBurgersPrice(item).toFixed(2)}kr</p>
+            </div>
+          );
+        })}
 
-    <h3>Selected Burgers:</h3>
-      {selectedBurger.map((item) => {
-      const burger = item.burger;
-      return (
-        <div key={burger.id}>
-          <h5>Name: {burger.name}</h5>
-          <p>Price: {burger.price} kr x {burger.quantity}</p>
-          <p>Total Price:{calculateBurgersPrice(item).toFixed(2)}kr</p>
-        </div>
-      );
-    })}
+        <h3>Selected Fries:</h3>
+          {selectedFries.map((fries) => (
+              <div key={fries.id}>
+                <h5>Name: {fries.name}</h5>
+                <p>Price: {fries.price} kr x {fries.quantity}</p>
+                <p>Total Price:{calculateFriesPrice(fries).toFixed(2)}kr</p>
+              </div>
+        ))}
 
-    <h3>Selected Fries:</h3>
-      {selectedFries.map((fries) => (
-          <div key={fries.id}>
-            <h5>Name: {fries.name}</h5>
-            <p>Price: {fries.price} kr x {fries.quantity}</p>
-            <p>Total Price:{calculateFriesPrice(fries).toFixed(2)}kr</p>
+        <h3>Selected Drinks:</h3>
+          {selectedDrinks.map((drink) => (
+          <div key={drink.id}>
+            <h5>Name: {drink.name}</h5>
+            <p>Price: {drink.price} kr x {drink.quantity}</p>
+              <p>Total Price:{calculateDrinksPrice(drink).toFixed(2)}kr</p>
           </div>
-    ))}
+        ))}
 
-    <h3>Selected Drinks:</h3>
-      {selectedDrinks.map((drink) => (
-      <div key={drink.id}>
-        <h5>Name: {drink.name}</h5>
-        <p>Price: {drink.price} kr x {drink.quantity}</p>
-          <p>Total Price:{calculateDrinksPrice(drink).toFixed(2)}kr</p>
+        <h4>Total Price: {totalPrice}</h4>
       </div>
-    ))}
+      <div className='card-container'>
+        <CardDetails
+            cardNumber={cardNumber}
+            setCardNumber={setCardNumber}
+            cardName={cardName}
+            setCardName={setCardName}
+            expiryDate={expiryDate}
+            setExpiryDate={setExpiryDate}
+            cvv={cvv}
+            setCvv={setCvv}
+            setPaymentMethod={setPaymentMethod}
+            setCardDetailsValid={setCardDetailsValid}
+          />
+      </div>
 
-    <h4>Total Price: {totalPrice}</h4>
+      <div className='address-container'>
+        <AddressForm
+            firstName={firstName} setFirstName={setFirstName}
+            lastName={lastName} setLastName={setLastName}
+            streetAddress={streetAddress} setStreetAddress={setStreetAddress}
+            city={city} setCity={setCity}
+            houseNumber={houseNumber} setHouseNumber={setHouseNumber}
+            setDeliveryDetailsValid={setDeliveryDetailsValid}
+          />
+      </div>
 
-    <div>
-      <CardDetails
-          cardNumber={cardNumber}
-          setCardNumber={setCardNumber}
-          cardName={cardName}
-          setCardName={setCardName}
-          expiryDate={expiryDate}
-          setExpiryDate={setExpiryDate}
-          cvv={cvv}
-          setCvv={setCvv}
-          setPaymentMethod={setPaymentMethod}
-          setCardDetailsValid={setCardDetailsValid}
-        />
+      <div className='payment-buttons'>
+            <button type="button" onClick={handlePlaceOrder}>Place Order</button>
+            <button type="button" onClick={cancelOrder}>Cancel Order</button>
+      </div>
     </div>
-
-    <div>
-      <AdressForm
-          firstName={firstName} setFirstName={setFirstName}
-          lastName={lastName} setLastName={setLastName}
-          streetAddress={streetAddress} setStreetAddress={setStreetAddress}
-          city={city} setCity={setCity}
-          houseNumber={houseNumber} setHouseNumber={setHouseNumber}
-          setDeliveryDetailsValid={setDeliveryDetailsValid}
-        />
-    </div>
-
-      <button type="button" onClick={handlePlaceOrder}>Place Order</button>
-      <button type="button" onClick={cancelOrder}>Cancel Order</button>
-      //Poput with the price and expire date
-</div>
+  </div>
 
  );   
 }
