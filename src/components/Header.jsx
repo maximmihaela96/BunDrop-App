@@ -12,7 +12,7 @@ function Header() {
           </h1>
 
           <p>
-          At Bun Drop Burgers, we believe that a burger should be more than just a meal; it should be an experience.
+          At Bun Drop Burgers, we believe that a burger should be more than just a meal it should be an experience.
           <br/>So join us today and let us treat you to the tastiest burgers!
           Bring your friends and you won't regret it!
           </p>
