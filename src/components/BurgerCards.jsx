@@ -10,14 +10,13 @@ function BurgerCards({ name, price, image, id }) {
     let existingBurger = existingItems.find((item) => item.burger.id === id);
   
     if (existingBurger) {
-      // Item already exists in localStorage
       const confirmAdd = window.confirm('This burger is already in your cart. Do you still want to add it?');
       if (!confirmAdd) {
-        return; // If the user cancels, exit the function
+        return; 
       }
       existingBurger.burger.quantity += 1;
     } else {
-      const confirmAddSuccesfully = window.confirm('This burger was added in the cart!');
+      window.confirm('This burger was added in the cart!');
       existingBurger = { burger: { id, name, price, image, quantity: 1  }};
       existingItems.push(existingBurger);
     }
@@ -29,14 +28,13 @@ function BurgerCards({ name, price, image, id }) {
     <div className="card">
       <Link to={`/burgers/${id}`}>   
         <div>
-              <img src={image} />
+              <img src={image} alt="" />
               <h1>{name}</h1>
               <p>{price} <span>kr</span></p> 
         </div>
       </Link>
         <button onClick={addToCart}>Add to Cart</button>
         </div>
-
   );
 }
 export default BurgerCards;

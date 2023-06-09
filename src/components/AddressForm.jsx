@@ -41,7 +41,7 @@ function AddressForm({
   return (
     <div className="delivery-details-container">
       <h2>Delivery Details</h2>
-      <div className="form-row">
+      <div>
 
         <label>First Name:</label>
         <input
@@ -52,7 +52,7 @@ function AddressForm({
         />
       </div>
 
-      <div className="form-row">
+      <div>
         <label>Last Name:</label>
         <input
           type="text"
@@ -62,7 +62,7 @@ function AddressForm({
         />
       </div>
 
-      <div className="form-row">
+      <div>
         <label>Street:</label>
         <input
           type="text"
@@ -72,7 +72,7 @@ function AddressForm({
         />
       </div>
 
-      <div className="form-row">
+      <div>
         <label>City:</label>
         <input
           type="text"
@@ -82,7 +82,7 @@ function AddressForm({
         />
       </div>
 
-      <div className="form-row">
+      <div>
         <label>House/Apartment Number:</label>
         <input
           type="text"

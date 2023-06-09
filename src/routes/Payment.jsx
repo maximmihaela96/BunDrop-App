@@ -46,35 +46,24 @@ function Payment() {
     const drinksPrice = drinkPrice * quantity;
     return drinksPrice;
   }
-  // Calculate total price for burgers
-  let burgerTotalPrice = 0;
-  if (selectedBurger) {
-    burgerTotalPrice = selectedBurger.reduce((total, item) => {
-      const burger = item.burger;
-      return total + burger.price * burger.quantity;
-    }, 0);
-  }
-  
-  // Calculate total price for fries
-  let friesTotalPrice = 0;
-  if (selectedFries) {
-    friesTotalPrice = selectedFries.reduce((total, fries) => {
-      const quantity = fries.quantity; 
-      return total + fries.price * quantity;
-    }, 0);
-  }
-  
-  // Calculate total price for drinks
-  let drinksTotalPrice = 0;
-  if (selectedDrinks) {
-    drinksTotalPrice = selectedDrinks.reduce((total, drink) => {
-      const quantity = drink.quantity; 
-      return total + drink.price * quantity;
-    }, 0);
-  }
   
   // Calculate the total payment price
-  const totalPrice = (burgerTotalPrice + friesTotalPrice + drinksTotalPrice).toFixed(2);
+const totalBurgerPrice = selectedBurger.reduce((total, burger) => {
+  const burgerPrice = calculateBurgersPrice(burger);
+  return total + burgerPrice;
+}, 0);
+
+const totalFriesPrice = selectedFries.reduce((total, fries) => {
+  const friesPrice = calculateFriesPrice(fries);
+  return total + friesPrice;
+}, 0);
+
+const totalDrinksPrice = selectedDrinks.reduce((total, drink) => {
+  const drinksPrice = calculateDrinksPrice(drink);
+  return total + drinksPrice;
+}, 0);
+
+const totalPrice = (totalBurgerPrice + totalFriesPrice + totalDrinksPrice).toFixed(2);
 
   function getRandomDeliveryTime() {
     const deliveryTimes = ['15 minutes', '30 minutes', '1 hour'];
@@ -163,57 +152,60 @@ function Payment() {
     window.alert('The order was cancelled.');
     navigate('/');
   }
-
+  
 return (
   
 <div>
   <div className='order-confirmation'>
-    <div className="page-title">
+    <div className="order-title">
       <h2>Order Confirmation</h2>
     </div>
     <div className='order-container'>
-        <h3>Selected Burgers:</h3>
           {selectedBurger.map((item) => {
           const burger = item.burger;
           return (
-            <div key={burger.id}>
-              <h5>Burger Type: {burger.name}</h5>
-              <p>Price: {burger.price} kr x {burger.quantity}</p>
-              <p>Total Price:{calculateBurgersPrice(item).toFixed(2)}kr</p>
+            <div key={burger.id} className="burger-card">
+              <h5 style={{marginRight:'5px', fontSize:'15px'}}>Burger Type: {burger.name}</h5>
+              <p style={{marginRight:'5px'}} > X {burger.quantity} - </p>
+              <p style={{ fontWeight: 'bold'}}> Price:<span> {calculateBurgersPrice(item).toFixed(2)}kr </span></p>
             </div>
           );
         })}
 
-        <h3>Selected Fries:</h3>
-          {selectedFries.map((fries) => (
-              <div key={fries.id}>
-                <h5>Name: {fries.name}</h5>
-                <p>Price: {fries.price} kr x {fries.quantity}</p>
-                <p>Total Price:{calculateFriesPrice(fries).toFixed(2)}kr</p>
-              </div>
-        ))}
-
-        <h3>Selected Drinks:</h3>
+{selectedFries.length > 0 && (
+  <div>
+    {selectedFries.map((fries) => (
+      <div key={fries.id} className="fries-card">
+        <h5 style={{marginRight:'5px', fontSize:'15px'}}>{fries.name} </h5>
+        <p style={{marginRight:'5px'}} > X {fries.quantity} - </p>
+        <p style={{ fontWeight: 'bold'}}> Price: {calculateFriesPrice(fries).toFixed(2)} kr</p>
+      </div>
+    ))}
+  </div>
+)}
+{selectedFries.length > 0 && (
+    <div>
           {selectedDrinks.map((drink) => (
-          <div key={drink.id}>
-            <h5>Name: {drink.name}</h5>
-            <p>Price: {drink.price} kr x {drink.quantity}</p>
-              <p>Total Price:{calculateDrinksPrice(drink).toFixed(2)}kr</p>
+          <div key={drink.id}  className="drinks-card">
+            <h5 style={{marginRight:'5px', fontSize:'15px'}}>Name: {drink.name}</h5>
+            <p style={{marginRight:'5px'}} > X {drink.quantity} - </p>
+            <p style={{ fontWeight: 'bold'}}> Price:{calculateDrinksPrice(drink).toFixed(2)}kr</p>
           </div>
         ))}
+  </div>
+)}
+    <div>
+      <h4 style={{  display: 'flex',backgroundColor:'#b6da03' ,justifyContent:'center', width:'30%', margin:'0 auto'}}>Total Price: {totalPrice}</h4>
+    </div>
 
-        <h4>Total Price: {totalPrice}</h4>
       </div>
       <div className='card-container'>
+                    
         <CardDetails
-            cardNumber={cardNumber}
-            setCardNumber={setCardNumber}
-            cardName={cardName}
-            setCardName={setCardName}
-            expiryDate={expiryDate}
-            setExpiryDate={setExpiryDate}
-            cvv={cvv}
-            setCvv={setCvv}
+            cardNumber={cardNumber} setCardNumber={setCardNumber}
+            cardName={cardName} setCardName={setCardName}
+            expiryDate={expiryDate} setExpiryDate={setExpiryDate}
+            cvv={cvv} setCvv={setCvv}
             setPaymentMethod={setPaymentMethod}
             setCardDetailsValid={setCardDetailsValid}
           />

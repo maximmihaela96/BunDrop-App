@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import '../services/BurgerDetailsPage.css';
+import '../services/ProductDetailsPage.css';
 import AdditionProducts from "../components/AdditionProducts";
 
 function BurgerItem() {
   const { productId } = useParams();
   const [burger, setBurger] = useState({});
   const [addition, setAddition] = useState();
-  const [quantity, setQuantity] = useState(1);
+  const [quantity] = useState(1);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -27,16 +27,15 @@ function BurgerItem() {
     const existingBurgerIndex = existingItems.findIndex(item => item.burger.id === burger.id);
   
     if (existingBurgerIndex !== -1) {
-      // Item already exists in localStorage
       const existingBurger = existingItems[existingBurgerIndex];
       const confirmAdd = window.confirm('This burger is already in your cart. Do you still want to add it?');
       if (!confirmAdd) {
-        return; // If the user cancels, exit the function
+        return; 
       }
       existingBurger.burger.quantity += 1;
       existingItems[existingBurgerIndex] = existingBurger;
     } else {
-      const confirmAddSuccesfully = window.confirm('This burger was added in the cart!');
+      window.confirm('This burger was added in the cart!');
       const newBurger = { burger: { id: burger.id, name: burger.name, price: burger.price, image: burger.image, quantity: quantity } };
       existingItems.push(newBurger);
     }

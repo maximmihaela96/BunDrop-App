@@ -1,9 +1,10 @@
   
-  .page-title {
-    background-color: #f5f5f5;
-    padding: 20px;
+  .shopping-page-title {
+    background-color: #333;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     text-align: center;
-    margin-bottom: 20px;
   }
 
   .burger-card, .fries-card, .drinks-card {
@@ -69,7 +70,7 @@
     margin: 0;
   }
   
-  @media (max-width: 600px) {
+  @media (max-width: 1000px) {
     .shopping-cart {
       margin: 10px;
       padding: 5px;

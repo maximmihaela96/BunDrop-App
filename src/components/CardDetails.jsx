@@ -41,15 +41,16 @@ function CardDetails({
 
   function handlePaymentMethodChange(e) {
     setSelectedPaymentMethod(e.target.value);
-    setPaymentMethod(e.target.value); // Pass the selected payment method to the parent component
+    setPaymentMethod(e.target.value); // Send the selected payment method to the payment component
   }
 
   return (
     <div className="card-details-container">
       <h2>Card Payment Details</h2>
-      <div className="form-row">
+      <div>
         <label>Payment Method:</label>
         <div>
+        <label>Card</label>
           <input
             type="radio"
             id="paymentMethodCard"
@@ -58,9 +59,9 @@ function CardDetails({
             checked={selectedPaymentMethod === 'card'}
             onChange={handlePaymentMethodChange}
           />
-          <label htmlFor="paymentMethodCard">Card</label>
         </div>
         <div>
+        <label>Swish</label>
           <input
             type="radio"
             id="paymentMethodSwish"
@@ -69,13 +70,12 @@ function CardDetails({
             checked={selectedPaymentMethod === 'swish'}
             onChange={handlePaymentMethodChange}
           />
-          <label htmlFor="paymentMethodSwish">Swish</label>
         </div>
       </div>
 
       {selectedPaymentMethod === 'card' && (
         <>
-          <div className="form-row">
+          <div>
             <label>Card Number:</label>
             <input
               type="text"
@@ -85,8 +85,8 @@ function CardDetails({
             />
           </div>
 
-          <div className="form-row">
-            <label>Cardholder Name:</label>
+          <div>
+            <label>Your Name:</label>
             <input
               type="text"
               value={cardName}
@@ -95,7 +95,7 @@ function CardDetails({
             />
           </div>
 
-          <div className="form-row">
+          <div>
             <label>Expiry Date:</label>
             <input
               type="text"
@@ -105,7 +105,7 @@ function CardDetails({
             />
           </div>
 
-          <div className="form-row">
+          <div>
             <label>Your CVV:</label>
             <input
               type="text"
@@ -118,11 +118,11 @@ function CardDetails({
       )}
 
       {selectedPaymentMethod === 'swish' && (
-        <div className="form-row">
+        <div>
           <label>Swish Phone Number:</label>
           <input
             type="text"
-            value={cardNumber} // You can reuse the cardNumber state to capture the phone number
+            value={cardNumber} 
             onChange={(e) => setCardNumber(e.target.value)}
             className={isCardNumberValid ? '' : 'invalid'}
           />

@@ -112,7 +112,6 @@
           "price": 20,
           "image": "/images/fries/fries-4.jpg"
         }
-        
       ],
       "drinks": [
         {
@@ -143,6 +142,6 @@
     }
   ],
   "orders": [
-   
+
   ]
 }

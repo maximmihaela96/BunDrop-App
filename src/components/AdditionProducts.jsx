@@ -1,5 +1,5 @@
 import React from "react";
-import '../services/BurgerDetailsPage.css';
+import '../services/ProductDetailsPage.css';
 
 function AdditionProducts({ fries, drinks }) {
 

@@ -98,7 +98,7 @@ function ShoppingCart() {
   return (
   <div>
       <Header></Header>
-      <div className="page-title">
+      <div className="shopping-page-title ">
         <h2>Shopping Cart</h2>
       </div>
       <div className="burger-container">

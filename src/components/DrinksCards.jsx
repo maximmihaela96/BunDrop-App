@@ -8,14 +8,13 @@ function DrinksCard({ drinks }) {
             const existingDrinks = existingItems.find((item) => item.id === selectedDrinks.id);
           
             if (existingDrinks) {
-              // Item already exists in localStorage
               const confirmAdd = window.confirm('This drink is already in your cart. Do you still want to add it?');
               if (!confirmAdd) {
-                return; // If the user cancels, exit the function
+                return; 
               }
               existingDrinks.quantity += 1;
             } else {
-              const confirmAddSuccesfully = window.confirm('This drink was added in the cart!');
+              window.confirm('This drink was added in the cart!');
               selectedDrinks.quantity = 1;
               existingItems.push(selectedDrinks);
             }
@@ -28,7 +27,7 @@ function DrinksCard({ drinks }) {
       {drinks?.map((drinks) => (
         <div className="card" key={drinks.id} style={{ marginright: '10px' }}>
           
-          <img src={process.env.PUBLIC_URL + drinks.image} />
+          <img src={process.env.PUBLIC_URL + drinks.image} alt=""/>
           <h1>{drinks.name}</h1>
           <p>{drinks.price} <span>kr</span></p>
           

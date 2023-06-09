@@ -12,8 +12,9 @@ function Header() {
           </h1>
 
           <p>
-            Lorem ipsum, dolor best Hamburgers sit amet adipisicing elit. Placeat
-            labore, sint cupiditate distinctio tempora reiciendis.
+          At Bun Drop Burgers, we believe that a burger should be more than just a meal; it should be an experience.
+          <br/>So join us today and let us treat you to the tastiest burgers!
+          Bring your friends and you won't regret it!
           </p>
 
           <div className='order-btn'>
