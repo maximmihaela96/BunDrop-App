@@ -1,4 +1,4 @@
-Opening the Project
+Opening the Project:
 To open the project and start working on it, follow these steps:
 
 Open a command prompt or terminal on your computer.
@@ -14,7 +14,7 @@ Once you are in the project folder in the command prompt or terminal, type the f
 code .
 This will open the project folder in Visual Studio Code (make sure you have Visual Studio Code installed on your machine).
 
-Starting the App
+Starting the App:
 To start the React app, follow these steps:
 
 Make sure you are in the project folder in the command prompt or terminal.
@@ -23,7 +23,7 @@ In the command prompt or terminal, run the following command:(You can use the te
 npm start
 This will open the app in your default browser.
 
-Running the Server
+Running the Server:
 Make sure thta you have this script on the pachage.json file. If you don t have just add it!
 
     "json-server": "json-server --watch db.json --port 7000 (or your desired port)"
@@ -34,14 +34,14 @@ npm run json-server
 This will start the server and allow your app to interact with it.
 
 
-Installing React Packages
+Installing React Packages:
 
 To install the react and react-dom packages, run the following command:
 npm install react react-dom
 This will install the necessary React packages for your project.
 
 
-Installing React Router
+Installing React Router:
 If you have any issues with navigation in your React app, you need to install React Router.
 
 To install React Router, run the following command:
