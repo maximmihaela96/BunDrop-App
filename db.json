@@ -83,6 +83,13 @@
       "description": "A fiery burger with jalapeno slices, pepper jack cheese, lettuce, and chipotle mayo.",
       "price": 99.9,
       "image": "/images/burgers/burger-8.png"
+    }, 
+    {
+      "id": 1,
+      "name": "Classic Burger",
+      "price": 89.9,
+      "description": "A juicy beef patty topped with lettuce, tomato, onion, and pickles, served on a sesame seed bun.",
+      "image": "/images/burgers/burger-1.png"
     }
   ],
   "addition": [
