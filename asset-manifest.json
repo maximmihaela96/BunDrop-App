@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/BunDrop-App/static/css/main.a4159e48.css",
+    "main.js": "/BunDrop-App/static/js/main.7c34a818.js",
+    "static/js/787.412bc481.chunk.js": "/BunDrop-App/static/js/787.412bc481.chunk.js",
+    "static/media/burger.png": "/BunDrop-App/static/media/burger.a895c1e7fb9a5a8ec445.png",
+    "static/media/logo_black.png": "/BunDrop-App/static/media/logo_black.3405eeaf3845d1e04f48.png",
+    "index.html": "/BunDrop-App/index.html",
+    "main.a4159e48.css.map": "/BunDrop-App/static/css/main.a4159e48.css.map",
+    "main.7c34a818.js.map": "/BunDrop-App/static/js/main.7c34a818.js.map",
+    "787.412bc481.chunk.js.map": "/BunDrop-App/static/js/787.412bc481.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a4159e48.css",
+    "static/js/main.7c34a818.js"
+  ]
+}
