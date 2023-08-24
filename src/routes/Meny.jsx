@@ -9,7 +9,7 @@ function Burgers() {
   const [allAdditions, setAddition] = useState([]);
 
   useEffect(() => {
-    fetch("https://maximmihaela96.github.io/api_BunDrop/meny.json/burgers")
+    fetch("http://localhost:7000/burgers")
       .then((res) => res.json())
       .then((data) => {
         setAllBurgers(data);
@@ -17,7 +17,7 @@ function Burgers() {
   }, []);
 
   useEffect(() => {
-    fetch("https://maximmihaela96.github.io/api_BunDrop/meny.json/addition")
+    fetch("http://localhost:7000/addition")
       .then((res) => res.json())
       .then((data) => setAddition(data));
   }, []);
