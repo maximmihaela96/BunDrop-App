@@ -1,58 +1,41 @@
 import React, { useEffect, useState } from "react";
 import "../services/Meny.css";
-import BurgerCards from "../components/BurgerCards";
-import DrinksCard from "../components/DrinksCards";
-import FriesCards from "../components/FriesCards";
+import BurgerCards from "../components/BurgerCards"; // You may need to create this component
 
 function Burgers() {
   const [allBurgers, setAllBurgers] = useState([]);
-  const [allAdditions, setAddition] = useState([]);
 
   useEffect(() => {
     fetch("https://maximmihaela96.github.io/api_BunDrop/meny.json")
       .then((res) => res.json())
       .then((data) => {
-        setAllBurgers(data);
+        if (Array.isArray(data)) {
+          setAllBurgers(data);
+        } else {
+          console.error("Data is not an array:", data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
       });
   }, []);
 
-  // useEffect(() => {
-  //   fetch("http://localhost:7000/addition")
-  //     .then((res) => res.json())
-  //     .then((data) => setAddition(data));
-  // }, []);
-
   return (
-    
     <div className="meny-container">
-      <h1 className="burger-page-title">Burgers Meny</h1>
+      <h1 className="burger-page-title">Burgers Menu</h1>
       <div className="cards-container">
         {allBurgers.map((burger) => (
           <BurgerCards
-            key={burger.id}
-            id={burger.id}
+            key={burger.id} // Make sure each burger has a unique key
             name={burger.name}
             price={burger.price}
+            description={burger.description}
             image={burger.image}
           />
         ))}
       </div>
-
-      <div id="drinks"  >
-        <h1 className="page-title">Drinks</h1>
-        {allAdditions.map((drinks) => (
-          <DrinksCard key={drinks.id} drinks={drinks.drinks} />
-        ))}
-      </div>
-
-      <div id="fries">
-        <h1 className="page-title">Fries</h1>
-        {allAdditions.map((fries) => (
-          <FriesCards key={fries.id} fries={fries.fries} />
-          ))}
-      </div>
-</div>
-  )
-        }
+    </div>
+  );
+}
 
 export default Burgers;
